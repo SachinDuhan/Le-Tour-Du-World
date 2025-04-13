@@ -81,7 +81,7 @@ const AppLayout = ({ children }: { children: ReactNode }) => {
       </header>
 
       {/* Page Content */}
-      <main className="flex-grow bg-gray-50 p-4">
+      <main className="flex-grow bg-orange-100 p-4">
         {children}
       </main>
     </div>
