@@ -17,7 +17,7 @@ export async function POST(request: Request) {
     let user 
     if (type == "tourist"){
       user = await TouristModel.findOne({ username: decodedUsername });
-    } else if (type == "vendor"){
+    } else if (type == "host"){
       user = await VendorModel.findOne({ username: decodedUsername });
     }
 

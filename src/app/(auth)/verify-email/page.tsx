@@ -34,7 +34,13 @@ export default function VerifyEmailPage() {
       setMessage(response.data.message);
 
       setTimeout(() => {
-        router.push(`/select-preference?touristUsername=${username}`); // Redirect to your post-login page
+        if (type == "tourist") {
+          router.push(`/select-preference?touristUsername=${username}`); 
+        }// Redirect to your post-login page
+        else{
+
+        router.push(`/login?type=${type}`); 
+        }
       }, 2000);
     } catch (err: any) {
       setError(err?.response?.data?.message || "Something went wrong");

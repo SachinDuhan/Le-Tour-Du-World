@@ -48,7 +48,7 @@ export default function VendorSignupPage() {
       setServerError(null);
       const response = await axios.post("/api/register-vendor", data);
       if (response.data.success) {
-        router.push(`/verify-email?username=${data.username}&type=vendor`);
+        router.push(`/verify-email?username=${data.username}&type=host`);
       }
     } catch (error: any) {
       setServerError(error?.response?.data?.message || "Something went wrong");
@@ -104,7 +104,7 @@ export default function VendorSignupPage() {
               {errors.website && <p className="text-red-500 text-xs mt-1">{errors.website.message}</p>}
             </div>
             <div>
-              <Label>Description <span className="text-muted-foreground text-xs">(Optional)</span></Label>
+              <Label>Description</Label>
               <Textarea placeholder="Tell us about your services..." {...register("description")} />
             </div>
 
