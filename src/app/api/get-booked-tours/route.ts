@@ -15,9 +15,9 @@ export async function POST(req: NextRequest) {
     }
 
     const bookedTours = user.bookedTours;
-    if (!bookedTours || bookedTours.length === 0) {
-      return NextResponse.json({ success: false, message: "No booked tours set" }, { status: 400 });
-    }
+    // if (!bookedTours || bookedTours.length === 0) {
+    //   return NextResponse.json({ success: false, message: "No booked tours set" }, { status: 400 });
+    // }
 
     const tours = await TourModel.aggregate([
       {

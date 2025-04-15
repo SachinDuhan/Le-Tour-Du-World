@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import dbConnect from "@/lib/dbConnect";
 import TourModel from "@/models/Tour.model";
 import TouristModel from "@/models/Tourist.model";
+import { debug } from "console";
 
 export async function POST(req: NextRequest) {
   try {
@@ -15,9 +16,9 @@ export async function POST(req: NextRequest) {
     }
 
     const preferredCategories = user.preferences;
-    if (!preferredCategories || preferredCategories.length === 0) {
-      return NextResponse.json({ success: false, message: "No preferred categories set" }, { status: 400 });
-    }
+    // if (!preferredCategories || preferredCategories.length === 0) {
+    //   return NextResponse.json({ success: false, message: "No preferred categories set" }, { status: 400 });
+    // }
 
     const tours = await TourModel.aggregate([
       {
@@ -37,6 +38,8 @@ export async function POST(req: NextRequest) {
         $unwind: "$vendor"
       }
     ]);
+
+    debug(tours)
 
     return NextResponse.json({ success: true, tours });
   } catch (error) {
